@@ -1,0 +1,38 @@
+﻿---
+import { Image } from "astro:assets";
+import fieldBg from "@assets/img/fondo-cancha.png";
+import proteccion from "@assets/img/proteccion.png";
+import crisis from "@assets/img/crisis.png";
+import digital from "@assets/img/digital.png";
+import educacion from "@assets/img/educacion.png";
+
+const benefits = [
+  { icon: proteccion, title: "Protección", text: "a las infancias" },
+  { icon: crisis, title: "Más oportunidades", text: "para la niñez y sus familias" },
+  { icon: digital, title: "Acompañamiento", text: "a las comunidades que más lo necesitan" },
+  { icon: educacion, title: "Más seguridad", text: "en entornos digitales" },
+];
+---
+
+<section id="significado" class="relative isolate overflow-hidden border-t-8 border-childfund-green bg-black px-5 pb-32 pt-16 text-white md:border-t-16 md:px-8 md:pb-40 md:pt-16">
+  <Image src={fieldBg} alt="" class="absolute inset-0 -z-20 h-full w-full object-cover" />
+  <div class="absolute inset-0 -z-10 bg-black/40"></div>
+
+  <div class="mx-auto max-w-7xl text-center">
+    <h2 class="mx-auto max-w-5xl text-2xl font-extrabold leading-tight md:text-4xl md:leading-tight">
+      ¿Qué significa Ser más verde con ChildFund?
+    </h2>
+
+    <div class="mx-auto mt-12 grid max-w-56 gap-12 md:mt-16 md:max-w-none md:grid-cols-4 md:gap-24 xl:gap-32">
+      {benefits.map((benefit) => (
+        <article class="flex flex-col items-center justify-center gap-5 text-center">
+          <Image src={benefit.icon} alt="" class="size-20 object-contain md:size-36" />
+          <div class="text-base leading-tight md:text-2xl">
+            <h3 class="m-0 font-bold">{benefit.title}</h3>
+            <p class="m-0 mt-1 font-normal leading-tight">{benefit.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
