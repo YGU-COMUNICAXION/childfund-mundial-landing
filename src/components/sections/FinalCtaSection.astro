@@ -7,49 +7,55 @@ import line03 from "@assets/img/linea-03.png";
 ---
 
 <section
-  class="relative isolate min-h-[28rem] overflow-hidden bg-childfund-green
-px-8 pt-14 text-white md:min-h-[30rem] md:px-16 md:py-20"
+  class="relative isolate min-h-112 overflow-hidden bg-childfund-green
+  px-8 pt-14 text-white md:min-h-96 md:overflow-visible md:px-16 md:py-16"
 >
   <Image
     src={wave}
     alt=""
-    class="pointer-events-none absolute left-1/2 top-4
+    class="pointer-events-none absolute left-1/2 top-0 z-10
    h-16 w-screen max-w-none
    -translate-x-1/2 -translate-y-1/2 rotate-0 object-cover md:h-28"
   />
 
   <div
-    class="absolute bottom-0 -right-80 z-10
-  h-96 w-132 overflow-hidden md:-right-16 md:h-[42rem] md:w-[50rem]"
+    class="absolute bottom-0 -right-80 md:-right-20 z-10
+    size-120 md:w-80 lg:w-100 xl:w-140 2xl:w-220"
   >
     <Image
       src={childrenFooter}
       loading="eager"
       alt="Niñas y niños sonriendo"
-      class="absolute inset-y-0 -left-1/4 h-full w-[126%] max-w-none object-cover"
+      class="absolute inset-y-0 -left-1/4 h-full
+      w-[126%] max-w-none object-cover md:left-0 md:w-full"
     />
   </div>
 
-  <Image
-    src={line01}
-    alt=""
-    class="absolute left-1/2 top-48 h-24 w-36 -translate-x-1/4 rotate-[-31deg] opacity-90 md:left-[64%] md:top-44 md:h-44 md:w-72"
-  />
-  <Image
-    src={line03}
-    alt=""
-    class="absolute right-0 top-72 hidden h-36 w-80 md:block"
-  />
+  <!-- REEMPLAZA TU CONTENEDOR DE LÍNEAS POR ESTE: -->
+  <div
+    class="absolute inset-0 [clip-path:inset(-100%_0px_0px_0px)] overflow-hidden"
+  >
+    <Image
+      src={line01}
+      alt=""
+      class="absolute left-1/2 top-48 h-24 w-36 -translate-x-1/4 rotate-[-31deg] opacity-90 md:left-[64%] md:top-44 md:h-44 md:w-72"
+    />
+    <Image
+      src={line03}
+      alt=""
+      class="absolute right-0 top-72 hidden h-36 w-80 md:block"
+    />
+  </div>
 
-  <div class="relative z-20 mx-auto max-w-7xl md:pl-16">
-    <div class="max-w-60 text-center md:max-w-4xl">
+  <div class="relative z-20 mx-auto max-w-7xl md:pl-12">
+    <div class="max-w-60 text-center md:max-w-2xl">
       <h2
         class="m-0 text-2xl font-extrabold leading-none md:text-5xl md:tracking-widest"
       >
         Hay un lugar para ti en este equipo.
       </h2>
       <p
-        class="m-0 mt-5 text-base font-medium leading-tight md:mt-20 md:text-3xl"
+        class="m-0 mt-5 text-base font-medium leading-tight md:mt-6 md:text-2xl"
       >
         Tú puedes ayudar a construir oportunidades y entornos más seguros para
         la niñez.
@@ -59,7 +65,7 @@ px-8 pt-14 text-white md:min-h-[30rem] md:px-16 md:py-20"
         class="mt-8 inline-flex px-3 py-2
       items-center justify-center rounded-lg bg-childfund-orange text-base
       font-bold tracking-widest text-white transition hover:bg-black
-      md:mt-10 md:h-14 md:w-full md:max-w-2xl md:text-3xl"
+      md:mt-8 md:h-12 md:w-full md:max-w-lg md:text-xl"
       >
         Únete al equipo.
       </a>

@@ -11,61 +11,117 @@ import whatsapp from "@assets/svg/whatsapp.svg";
 const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
 ---
 
-<section id="inicio" class="relative isolate min-h-screen overflow-hidden bg-black text-white md:min-h-[51rem]">
-  <Image src={bgHero} alt="" class="absolute inset-0 -z-30 h-full w-full object-cover" />
+<section
+  id="inicio"
+  class="relative isolate min-h-screen overflow-hidden bg-black text-white md:min-h-204"
+>
+  <Image
+    src={bgHero}
+    alt=""
+    class="absolute inset-0 -z-30 h-full w-full object-cover"
+  />
   <Image
     src={heroKids}
     alt="Niñas y niños jugando futbol"
-    class="absolute -z-20 h-[79rem] w-[80rem] max-w-none object-cover opacity-75 max-md:left-1/2 max-md:top-[-14.75rem] max-md:-translate-x-[15%] md:left-1/2 md:top-[-6.75rem] md:h-[64.625rem] md:w-[65.25rem]"
+    class="absolute -z-20 size-[80rem]
+    max-w-none object-cover opacity-80
+    max-md:top-[-14.75rem]
+    md:left-1/2
+    md:top-[-6.75rem] md:h-[64.625rem] md:w-[65.25rem]"
   />
-  <div class="absolute inset-0 -z-10 bg-black/10 md:hidden"></div>
+  <div class="absolute inset-0 -z-10 bg-black/45 md:bg-black/35"></div>
 
-  <Image src={hashtag} alt="" class="absolute left-8 top-40 size-24 md:left-20 md:top-32 md:size-28" />
-  <Image src={line01} alt="" class="absolute hidden h-52 w-80 rotate-[-28deg] md:left-[40%] md:top-[-2rem] md:block" />
-  <Image src={line03} alt="" class="absolute hidden h-24 w-48 rotate-[75deg] md:left-1/2 md:top-[38rem] md:block" />
+  <Image
+    src={hashtag}
+    alt=""
+    class="absolute left-8 top-40 size-24 md:left-20 md:top-32 md:size-28"
+  />
+  <Image
+    src={line01}
+    alt=""
+    class="absolute hidden h-52 w-80 rotate-[-28deg] md:left-[40%] md:top-[-2rem] md:block"
+  />
+  <Image
+    src={line03}
+    alt=""
+    class="absolute hidden h-24 w-48 rotate-[75deg] md:left-1/2 md:top-[38rem] md:block"
+  />
 
-  <div class="mx-auto grid w-full max-w-screen-2xl px-10 pb-10 pt-20 md:px-40 md:pt-8">
-    <Image src={logo} alt="ChildFund México" class="mx-auto h-20 w-48 md:mx-0" />
+  <div
+    class="mx-auto grid w-full max-w-screen-2xl px-10 pb-10 pt-20 md:px-40 md:pt-8"
+  >
+    <Image
+      src={logo}
+      alt="ChildFund México"
+      class="mx-auto h-20 w-48 md:mx-0"
+    />
 
-    <div class="mx-auto mt-6 flex max-w-sm flex-col items-center text-center drop-shadow-[0_0.25rem_0.125rem_rgba(0,0,0,0.34)] md:mx-0 md:mt-5 md:max-w-xl md:items-start md:text-left md:drop-shadow-none">
-      <h1 class="m-0 max-w-60 mb-4
+    <div
+      class="mx-auto mt-6 flex max-w-sm flex-col items-center text-center drop-shadow-[0_0.25rem_0.125rem_rgba(0,0,0,0.34)] md:mx-0 md:mt-5 md:max-w-xl md:items-start md:text-left md:drop-shadow-none"
+    >
+      <h1
+        class="m-0 max-w-60 mb-4
       text-center text-2xl font-extrabold uppercase leading-none
-      md:max-w-lg md:text-left md:text-5xl md:leading-none md:tracking-widest">
+      md:max-w-lg md:text-left md:text-5xl md:leading-none md:tracking-widest"
+      >
         SOY MÁS VERDE CON CHILDFUND
       </h1>
-      <p class="m-0 mt-2 text-center text-base leading-none md:mt-5 md:text-left md:text-xl">
-        Haz equipo por la niñez. Acompaña, protege y ayuda a construir oportunidades para las niñas, niños y adolescentes.
+      <p
+        class="m-0 mt-2 text-center text-base leading-none md:mt-5 md:text-left md:text-xl"
+      >
+        Haz equipo por la niñez. Acompaña, protege y ayuda a construir
+        oportunidades para las niñas, niños y adolescentes.
       </p>
-      <p class="m-0 mt-4 max-w-xs text-center text-base font-bold leading-none text-childfund-green md:mt-5 md:max-w-xl md:text-left md:text-2xl md:font-extrabold">
+      <p
+        class="m-0 mt-4 max-w-xs text-center text-base font-bold leading-none text-childfund-green md:mt-5 md:max-w-xl md:text-left md:text-2xl md:font-extrabold"
+      >
         Los grandes cambios empiezan cuando hacemos equipo.
       </p>
     </div>
 
-    <form id="registro" class="mx-auto mt-20 flex w-full max-w-xs flex-col gap-5 md:mx-0 md:mt-8 md:max-w-lg" action="#" method="post">
-      {fields.map((field) => (
-        <label class="contents" for={field}>
-          <span class="sr-only">{field}</span>
-          <input
-            id={field}
-            name={field.toLowerCase().replace("(", "").replace(")", "")}
-            placeholder={field}
-            class="h-10 rounded-md border-0 bg-white px-4 text-center text-sm font-light text-black outline-none placeholder:text-black/70 focus:ring-2 focus:ring-childfund-green md:h-11 md:text-left md:text-xl md:font-medium md:placeholder:text-black/35"
-            required
-          />
-        </label>
-      ))}
-      <button class="mt-1 h-14 rounded-md bg-childfund-green text-xl font-extrabold uppercase tracking-widest text-white transition hover:bg-childfund-orange" type="submit">
+    <form
+      id="registro"
+      class="mx-auto mt-12
+    flex w-full max-w-xs flex-col gap-5 md:mx-0 md:mt-8 md:max-w-lg"
+      action="#"
+      method="post"
+    >
+      {
+        fields.map((field) => (
+          <label class="contents" for={field}>
+            <span class="sr-only">{field}</span>
+            <input
+              id={field}
+              name={field.toLowerCase().replace("(", "").replace(")", "")}
+              placeholder={field}
+              class="h-10 rounded-md border-0 bg-white px-4 text-center text-sm font-light text-black outline-none placeholder:text-black/70 focus:ring-2 focus:ring-childfund-green md:h-11 md:text-left md:text-xl md:font-medium md:placeholder:text-black/35"
+              required
+            />
+          </label>
+        ))
+      }
+      <button
+        class="mt-1 h-14 rounded-md bg-childfund-green text-xl font-extrabold uppercase tracking-widest text-white transition hover:bg-childfund-orange"
+        type="submit"
+      >
         QUIERO UNIRME
       </button>
     </form>
 
     <div class="mx-auto mt-2 w-full max-w-xs md:mx-0 md:mt-3 md:max-w-lg">
-      <div class="flex items-center gap-3 text-center text-sm font-medium tracking-widest">
+      <div
+        class="flex items-center gap-3 text-center text-sm font-medium tracking-widest"
+      >
         <span class="h-px flex-1 bg-white"></span>
         <span class="font-semibold text-sm">para más información</span>
         <span class="h-px flex-1 bg-white"></span>
       </div>
-      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-2 flex h-14 items-center justify-center gap-3 rounded-md border-2 border-white text-xl font-extrabold tracking-widest text-white transition hover:bg-white hover:text-black">
+      <a
+        href="https://wa.me/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 flex h-14 items-center justify-center gap-3 rounded-md border-2 border-white text-xl font-extrabold tracking-widest text-white transition hover:bg-white hover:text-black"
+      >
         <Image src={whatsapp} alt="" class="size-7" />
         Contáctanos
       </a>
