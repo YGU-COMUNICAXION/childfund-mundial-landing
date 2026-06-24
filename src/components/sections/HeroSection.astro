@@ -8,7 +8,22 @@ import line01 from "@assets/img/linea-01.png";
 import line03 from "@assets/img/linea-03.png";
 import whatsapp from "@assets/svg/whatsapp.svg";
 
-const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
+const fields = [
+  {
+    id: "nombres",
+    label: "Nombre(s)",
+    type: "text",
+    autocomplete: "given-name",
+  },
+  {
+    id: "apellidos",
+    label: "Apellidos",
+    type: "text",
+    autocomplete: "family-name",
+  },
+  { id: "correo", label: "Correo", type: "email", autocomplete: "email" },
+  { id: "celular", label: "Celular", type: "tel", autocomplete: "tel" },
+];
 ---
 
 <section
@@ -23,23 +38,23 @@ const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
   <Image
     src={heroKids}
     alt="Niñas y niños jugando futbol"
-    class="absolute -z-20 size-[80rem]
+    class="absolute -z-20 size-320
     max-w-none object-cover opacity-80
-    max-md:top-[-14.75rem]
+    max-md:-top-59
     md:left-1/2
-    md:top-[-6.75rem] md:h-[64.625rem] md:w-[65.25rem]"
+    md:-top-27 md:h-258.5 md:w-261"
   />
   <div class="absolute inset-0 -z-10 bg-black/45 md:bg-black/35"></div>
 
   <Image
     src={line01}
     alt=""
-    class="absolute hidden h-52 w-80 rotate-[-28deg] md:left-[40%] md:top-[-2rem] md:block"
+    class="absolute hidden h-52 w-80 rotate-[-28deg] md:left-[40%] md:-top-8 md:block"
   />
   <Image
     src={line03}
     alt=""
-    class="absolute hidden h-24 w-48 rotate-[75deg] md:left-1/2 md:top-[38rem] md:block"
+    class="absolute hidden h-24 w-48 rotate-75 md:left-1/2 md:top-152 md:block"
   />
 
   <div
@@ -54,7 +69,11 @@ const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
     <div
       class="mx-auto relative mt-6 flex max-w-sm flex-col items-center text-center drop-shadow-[0_0.25rem_0.125rem_rgba(0,0,0,0.34)] md:mx-0 md:mt-5 md:max-w-xl md:items-start md:text-left md:drop-shadow-none"
     >
-      <Image src={hashtag} alt="" class="absolute npm left-0 md:-left-24 size-20 md:size-28" />
+      <Image
+        src={hashtag}
+        alt=""
+        class="absolute left-0 md:-left-24 size-20 md:size-28"
+      />
       <div class="flex gap-2 relative">
         <h1
           class="m-0 max-w-60 mb-4
@@ -81,29 +100,57 @@ const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
       id="registro"
       class="mx-auto mt-12
     flex w-full max-w-xs flex-col gap-5 md:mx-0 md:mt-8 md:max-w-lg"
-      action="#registro"
+      action="/api/leads"
       method="post"
+      aria-describedby="form-feedback"
     >
       {
         fields.map((field) => (
-          <label class="contents" for={field}>
-            <span class="sr-only">{field}</span>
+          <label class="contents" for={field.id}>
+            <span class="sr-only">{field.label}</span>
             <input
-              id={field}
-              name={field.toLowerCase().replace("(", "").replace(")", "")}
-              placeholder={field}
-              class="h-10 rounded-md border-0 bg-white px-4 text-center text-sm font-light text-black outline-none placeholder:text-black/70 focus:ring-2 focus:ring-childfund-green md:h-11 md:text-left md:text-xl md:font-medium md:placeholder:text-black/35"
+              id={field.id}
+              name={field.id}
+              type={field.type}
+              autocomplete={field.autocomplete}
+              placeholder={field.label}
+              class="h-10 rounded-md border-0 bg-white px-4 text-center text-sm font-light text-black outline-none transition placeholder:text-black/70 hover:bg-white/90 focus:ring-2 focus:ring-childfund-green md:h-11 md:text-left md:text-xl md:font-medium md:placeholder:text-black/35"
               required
             />
           </label>
         ))
       }
+      <input
+        type="text"
+        name="company"
+        tabindex="-1"
+        autocomplete="off"
+        class="hidden"
+      />
       <button
-        class="mt-1 h-14 rounded-md bg-childfund-green text-xl font-extrabold uppercase tracking-widest text-white transition hover:bg-childfund-orange"
+        id="registro-submit"
+        class="mt-1 inline-flex h-14 items-center justify-center gap-3 rounded-md
+         bg-childfund-green text-xl font-extrabold uppercase tracking-widest
+         hover:cursor-pointer
+         text-white transition duration-200 hover:-translate-y-0.5
+         hover:bg-childfund-orange hover:shadow-lg focus-visible:outline
+         focus-visible:outline-2 focus-visible:outline-offset-4
+         focus-visible:outline-white disabled:cursor-not-allowed
+         disabled:hover:translate-y-0 disabled:hover:bg-childfund-green disabled:hover:shadow-none"
         type="submit"
       >
-        QUIERO UNIRME
+        <span
+          id="registro-spinner"
+          class="hidden size-5 animate-spin rounded-full border-2 border-white/40 border-t-white"
+          aria-hidden="true"></span>
+        <span id="registro-submit-label">QUIERO UNIRME</span>
       </button>
+      <p
+        id="form-feedback"
+        class="min-h-5 text-center text-sm font-semibold text-white"
+        aria-live="polite"
+      >
+      </p>
     </form>
 
     <div class="mx-auto mt-2 w-full max-w-xs md:mx-0 md:mt-3 md:max-w-lg">
@@ -115,10 +162,10 @@ const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
         <span class="h-px flex-1 bg-white"></span>
       </div>
       <a
-        href="https://wa.me/"
+        href="https://wa.me/525518109800"
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-2 flex h-14 items-center justify-center gap-3 rounded-md border-2 border-white text-xl font-extrabold tracking-widest text-white transition hover:bg-white hover:text-black"
+        class="mt-2 flex h-14 items-center justify-center gap-3 rounded-md border-2 border-white text-xl font-extrabold tracking-widest text-white transition duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-black hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
       >
         <Image src={whatsapp} alt="" class="size-7" />
         Contáctanos
@@ -126,3 +173,92 @@ const fields = ["Nombre(s)", "Apellidos", "Correo", "Celular"];
     </div>
   </div>
 </section>
+
+<div
+  id="registro-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="registro-modal-title"
+>
+  <div
+    class="w-full max-w-md rounded-lg bg-white px-6 py-8 text-center text-black shadow-2xl"
+  >
+    <h2
+      id="registro-modal-title"
+      class="m-0 text-2xl font-extrabold text-childfund-green"
+    >
+      ¡Gracias por unirte al equipo!
+    </h2>
+    <p class="m-0 mt-4 text-base font-medium leading-snug">
+      Una persona de nuestro equipo se pondrá en contacto contigo para dar
+      seguimiento a tu apadrinamiento.
+    </p>
+    <button
+      id="registro-modal-close"
+      class="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-childfund-orange px-8 text-base font-bold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-black hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-childfund-orange"
+      type="button"
+    >
+      Cerrar
+    </button>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("registro");
+  const submitButton = document.getElementById("registro-submit");
+  const submitLabel = document.getElementById("registro-submit-label");
+  const spinner = document.getElementById("registro-spinner");
+  const feedback = document.getElementById("form-feedback");
+  const modal = document.getElementById("registro-modal");
+  const closeModal = document.getElementById("registro-modal-close");
+
+  const setFeedback = (message: string | null) => {
+    if (feedback) feedback.textContent = message;
+  };
+
+  const openModal = () => {
+    modal?.classList.remove("hidden");
+    modal?.classList.add("flex");
+  };
+
+  const hideModal = () => {
+    modal?.classList.add("hidden");
+    modal?.classList.remove("flex");
+  };
+
+  closeModal?.addEventListener("click", hideModal);
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) hideModal();
+  });
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    setFeedback("");
+    submitButton?.setAttribute("disabled", "true");
+    submitButton?.classList.add("opacity-70");
+    spinner?.classList.remove("hidden");
+    submitLabel && (submitLabel.textContent = "ENVIANDO");
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        body: new FormData(form),
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo enviar el formulario");
+      }
+
+      form.reset();
+      openModal();
+    } catch {
+      setFeedback("No pudimos enviar tu información. Intenta de nuevo.");
+    } finally {
+      submitButton?.removeAttribute("disabled");
+      submitButton?.classList.remove("opacity-70");
+      spinner?.classList.add("hidden");
+      submitLabel && (submitLabel.textContent = "QUIERO UNIRME");
+    }
+  });
+</script>
