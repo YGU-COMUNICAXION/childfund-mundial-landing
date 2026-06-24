@@ -1,46 +1,35 @@
-# Astro Starter Kit: Basics
+# ChildFund México
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Link del proyecto publicado
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[https://chilfund.netlify.app/](https://chilfund.netlify.app/)
 
-## 🚀 Project Structure
+## Descripcion
 
-Inside of your Astro project, you'll see the following folders and files:
+Landing page para ChildFund México enfocada en apadrinamientos. Incluye sección principal con formulario de registro de leads, enlace al sitio oficial, contacto por WhatsApp y envío de registros por correo usando una API interna.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Tecnologias usadas
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- Astro
+- Tailwind CSS
+- @astrojs/netlify
+- Nodemailer
 
-## 🧞 Commands
+## Requisitos
 
-All commands are run from the root of the project, from a terminal:
+- Node.js 22.12.0+
+- npm
+- Variables de entorno SMTP para envío de correos
+- Credenciales SMTP válidas en `CHILDFUND_SMTP_HOST`, `CHILDFUND_SMTP_USER` y `CHILDFUND_SMTP_PASS`
+- Correo destino en `CHILDFUND_EMAIL_TO`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Retos tecnicos
 
-## 👀 Want to learn more?
+- Integrar un backend API en Astro para recibir leads desde el formulario.
+- Enviar notificaciones de nuevos registros por email con Nodemailer.
+- Configurar `@astrojs/netlify` para despliegue con salida serverless.
+- Mantener un diseño responsive y accesible con Tailwind CSS.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Creditos
+
+Desarrollado por Jonathan Alexis Bello Lopez.
