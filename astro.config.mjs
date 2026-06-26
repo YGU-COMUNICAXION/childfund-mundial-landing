@@ -10,6 +10,11 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop'
+    }
+  },
   vite: {
     plugins: [tailwindcss()]
   }
