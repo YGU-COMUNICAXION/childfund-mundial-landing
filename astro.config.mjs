@@ -10,6 +10,9 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
+  security: {
+    checkOrigin: false
+  },
   image: {
     service: {
       entrypoint: 'astro/assets/services/noop'
